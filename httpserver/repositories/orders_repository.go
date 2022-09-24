@@ -8,7 +8,7 @@ import (
 
 type OrdersRepository interface {
 	GetOrders() ([]models.Order, error)
-	GetOrderByOrderId(orderId int) (models.Order, error)
+	GetOrder(orderId int) (models.Order, error)
 	CreateOrder(order models.Order) (models.Order, error)
 	UpdateOrder(orderId int, order models.Order) (models.Order, error)
 	DeleteOrder(order models.Order) error
@@ -33,7 +33,7 @@ func (repo *ordersRepository) GetOrders() ([]models.Order, error) {
 	return orders, nil
 }
 
-func (repo *ordersRepository) GetOrderByOrderId(orderId int) (models.Order, error) {
+func (repo *ordersRepository) GetOrder(orderId int) (models.Order, error) {
 	var orders models.Order
 
 	err := repo.db.Preload("Items").Where("order_id = ?", orderId).First(&orders).Error

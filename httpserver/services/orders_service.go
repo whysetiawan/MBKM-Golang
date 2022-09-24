@@ -33,7 +33,7 @@ func (service *orderService) GetOrders() ([]models.Order, error) {
 }
 
 func (service *orderService) GetOrder(orderId int) (models.Order, error) {
-	order, err := service.orderRepository.GetOrderByOrderId(orderId)
+	order, err := service.orderRepository.GetOrder(orderId)
 	if err != nil {
 		return order, err
 	}
@@ -68,7 +68,7 @@ func (service *orderService) CreateOrder(input params.OrderParams) (models.Order
 }
 
 func (service *orderService) UpdateOrder(orderId int, input params.OrderParams) (models.Order, error) {
-	order, err := service.orderRepository.GetOrderByOrderId(orderId)
+	order, err := service.orderRepository.GetOrder(orderId)
 	if err != nil {
 		return order, err
 	}
@@ -96,7 +96,7 @@ func (service *orderService) UpdateOrder(orderId int, input params.OrderParams) 
 		return order, err
 	}
 
-	order, err = service.orderRepository.GetOrderByOrderId(orderId)
+	order, err = service.orderRepository.GetOrder(orderId)
 	if err != nil {
 		return order, err
 	}
@@ -105,7 +105,7 @@ func (service *orderService) UpdateOrder(orderId int, input params.OrderParams) 
 }
 
 func (service *orderService) DeleteOrder(orderId int) error {
-	order, err := service.orderRepository.GetOrderByOrderId(orderId)
+	order, err := service.orderRepository.GetOrder(orderId)
 	if err != nil {
 		return err
 	}
