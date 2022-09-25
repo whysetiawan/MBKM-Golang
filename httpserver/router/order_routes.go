@@ -12,5 +12,7 @@ func OrderRoutes(route *gin.Engine, ordersController controllers.OrdersControlle
 		orderRoutes.GET("", ordersController.GetAllOrders)
 		orderRoutes.POST("", ordersController.CreateOrder)
 		orderRoutes.GET("/:id", ordersController.GetOrderById)
+		orderRoutes.PUT("/:id", ordersController.UpdateOrder)
+		orderRoutes.DELETE("/:id", ordersController.DeleteOrder)
 	}
 }
